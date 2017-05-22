@@ -1,0 +1,48 @@
+<html lang="en"><head>
+    <meta charset="utf-8">
+    <meta name="robots" content="noindex">
+
+    <title> <%= title%> </title>
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link href="//maxcdn.bootstrapcdn.com/bootstrap/3.3.0/css/bootstrap.min.css" rel="stylesheet" id="bootstrap-css">
+    <link rel='stylesheet' href='/stylesheets/style.css' />
+    <script src="//code.jquery.com/jquery-1.10.2.min.js"></script>
+    <script src="//maxcdn.bootstrapcdn.com/bootstrap/3.3.0/js/bootstrap.min.js"></script>
+    <script type="text/javascript">
+        window.alert = function(){};
+        var defaultCSS = document.getElementById('bootstrap-css');
+        function changeCSS(css){
+            if(css) $('head > link').filter(':first').replaceWith('<link rel="stylesheet" href="'+ css +'" type="text/css" />'); 
+            else $('head > link').filter(':first').replaceWith(defaultCSS); 
+        }
+        $( document ).ready(function() {
+          var iframe_height = parseInt($('html').height()); 
+          window.parent.postMessage( iframe_height, 'https://bootsnipp.com');
+        });
+    </script>
+</head>
+<body class="modal-open" style="">
+  <!-- <a href="#" data-toggle="modal" data-target="#login-modal">Login</a> -->
+
+<div class="modal fade in" id="login-modal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="false" style="display: block;"><div class="modal-backdrop fade in"></div>
+        <div class="modal-dialog">
+        <div class="loginmodal-container" style="max-width: 550px;">
+          <h1>New Message</h1><br>
+         
+          <form method="post" action="#"> 
+          <input type="text" name="from" placeholder="<%= data.email%>" disabled>
+           <input type="text" name="to" placeholder="To">
+            <input type="text" name="subject" placeholder="Email Subject">
+            <textarea style="width: 490px; height: 150px;" name="msg" placeholder="Start typing..."> </textarea>
+          <input style="margin-top: 15px;" type="submit" name="send" class="login loginmodal-submit" value="Send">
+          </form>
+        </div>
+      </div>
+      </div>
+  <script type="text/javascript">
+  
+  </script>
+  <% include ./partials/layout.ejs %>
+
+
+</body></html>
