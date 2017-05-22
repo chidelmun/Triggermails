@@ -39,15 +39,16 @@ router.post('/', function(req, res,next){
 			if (results.length > 0) {
 				if (results[0].email == username && results[0].password == password) {
 					console.log("User Found in Database");
+					req.session.user = results[0];
 					res.render('home', {title : 'Trigger Mail | Dashboard'});
 				}else{
 
-					res.render('login', {title : 'Trigger Mail | Login', message : 'Enter Correct Password'})
+					res.render('login', {title : 'Trigger Mail | Login', message : " Enter Correct Password "});
 				}
 
 			}else{
 				console.log("Username not Found!");
-				res.send("No User Found");
+				res.render('login', {title : 'Trigger Mail | Login', message : " No Matching user Found! "});
 			}
 		});
 
