@@ -1,14 +1,21 @@
 var express = require('express');
 var router = express.Router();
 var mysql = require('mysql');
+var session = require('express-session');
 
 /* GET home page. */
 router.get('/', function(req, res, next) {
+	if (!req.session.user) {
+		res.redirect('/login');
+	}
+	
+
+	req.session.user = {};
 	var connection = mysql.createConnection({
 		host : 'localhost',
 		user : 'root',
 		password : 'root',
-		database : 'shop'
+		database : 'mailapp'
 	});
 
 	connection.connect(function(err){
@@ -17,7 +24,7 @@ router.get('/', function(req, res, next) {
 		}
 	});
 
-	connection.query("SELECT * from jobs", function(err, results, fields){
+	connection.query("SELECT * from users", function(err, results, fields){
 		if (err) {
 			console.log("Error with Query " + err);
 		}else{
