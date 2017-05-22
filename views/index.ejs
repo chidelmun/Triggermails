@@ -12,14 +12,13 @@
 	<!-- Latest compiled and minified JavaScript -->
 	<script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js" integrity="sha384-Tc5IQib027qvyjSMfHjOMaLkfuWVxZxUPnCJA7l2mCWNIpG9mGCD8wGNIcPD7Txa" crossorigin="anonymous"></script>
   </head>
-  <body>
-    
+  <body>   
     	<div class="container">
     	<h1><%= title %></h1>
     	<nav class="navbar navbar-inverse">
 		  <div class="container-fluid">
 		    <div class="navbar-header">
-		      <a class="navbar-brand" href="#">Wakku Inbox</a>
+		      <a class="navbar-brand" href="/">Wakku Inbox</a>
 		    </div>
 		    <ul class="nav navbar-nav">
 		      <li class="active"><a href="#">Inbox</a></li>
@@ -27,8 +26,9 @@
 		      <li><a href="#">Archives</a></li>
 		    </ul>
 		    <ul class="nav navbar-nav navbar-right">
-		    	<li><a href="#"><span class="glyphicon glyphicon-user"></span> </a></li>
+		    	<li><a href="#"><span class="glyphicon glyphicon-user"></span> <%= data.display_name %> </a></li>
       			<li><a href="#"><span class="glyphicon glyphicon-envelope"></span> 0</a></li>
+      			<li><a href="/logout"><span class="glyphicon glyphicon-log-out"></span> Logout </a></li>
 		     
 		    </ul>
 		  </div>

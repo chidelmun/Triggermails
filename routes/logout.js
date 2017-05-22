@@ -5,13 +5,13 @@ var session = require('express-session');
 
 /* GET home page. */
 router.get('/', function(req, res, next) {
-	if (!req.session.user) {
-		res.redirect('/login');
-	}
-	else{
-		res.render('index', {title : "Trigger Mail Dashboard", data : req.session.user });
-		// res.redirect(200,'/');
-	}
+	req.session.destroy(function(err){
+		if (err) {
+			console.log("Error with logout");
+		}else{
+			res.redirect('/');
+		}
+	});
   
 });
 
