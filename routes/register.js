@@ -7,7 +7,7 @@ var session = require('express-session');
 router.get('/', function(req, res, next) {
 	
 	
-		res.render('register', {title : "Trigger Mail Dashboard" });
+		res.render('register', {title : "Trigger Mail Dashboard", msg : " " });
 	
 });
 
@@ -30,6 +30,7 @@ router.post('/', function(req, res, next){
 	connection.query("insert into users(email, display_name, password) values(?,?,?)",[req.body.user,req.body.fname + ' ' + req.body.lname, req.body.pass],function(err, results,fields){
 		if (err) {
 			console.log("Error Executing Query " + err);
+			res.render('register', {title : "Trigger Mail Dashboard", msg : "User " + req.body.user + " already Exists" });
 		}else{
 			res.send("Thank You");
 		}
