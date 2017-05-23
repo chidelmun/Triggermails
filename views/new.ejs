@@ -30,7 +30,7 @@
           <h1>New Message</h1><br>
          
           <form method="post" action="#"> 
-          <input type="text" name="from" placeholder="<%= data.email%>" disabled>
+          <input type="text" name="from" placeholder="<%= data.email%>" value="<%= data.email%>">
            <input type="text" name="to" placeholder="To">
             <input type="text" name="subject" placeholder="Email Subject">
             <textarea style="width: 490px; height: 150px;" name="msg" placeholder="Start typing..."> </textarea>
@@ -42,7 +42,7 @@
   <script type="text/javascript">
   
   </script>
-  <% include ./partials/layout.ejs %>
+  <!-- <% include ./partials/layout.ejs %> -->
 
 
 </body></html>
