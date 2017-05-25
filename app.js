@@ -33,7 +33,7 @@ app.use(session({
 }));
 
 app.use('/', index);
-app.use('/users', users);
+// app.use('/users', users);
 app.use('/login', login);
 app.use('/logout', logout);
 app.use('/register', register);
@@ -49,6 +49,15 @@ app.get('/games', function(req,res,next){
 		res.send("Welcome");
 	}
 
+});
+
+app.use('*', function(req, res, next){
+	if (!req.session.user) {
+	res.redirect('/login');
+	}
+	else{
+		res.redirect('/');
+	}
 });
 
 // catch 404 and forward to error handler
