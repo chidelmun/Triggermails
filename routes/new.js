@@ -36,7 +36,7 @@ router.post('/', function(req,res,next){
 			console.log("Error Executing Query " + err);
 		}else{
 			console.log("Query successful ");
-			res.send("Sent to :" + req.session.user.email + "Thank You!");
+			res.redirect('/');
 		}
 	});	
 	

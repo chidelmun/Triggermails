@@ -43,7 +43,8 @@ router.post('/', function(req, res,next){
 				if (results[0].email == username && results[0].password == password) {
 					console.log("User Found in Database");
 					req.session.user = results[0];
-					res.render('index', {title : 'Trigger Mail | Dashboard', data : req.session.user, emails : "" });
+					res.redirect('/');
+					// res.render('index', {title : 'Trigger Mail | Dashboard', data : req.session.user, emails : "" });
 				}else{
 
 					res.render('login', {title : 'Trigger Mail | Login', message : " Enter Correct Password "});

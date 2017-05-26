@@ -18,6 +18,7 @@ router.get('/', function(req, res, next) {
 		connection.connect(function(err){
 			if (err) {
 				console.log("Error connecting tom database");
+				res.render('login', {title : 'Trigger Mail | Login', message : " Database not Running..."});
 			}else{
 				console.log("Connected to Database");
 			}
