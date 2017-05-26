@@ -24,7 +24,7 @@ router.get('/', function(req, res, next) {
 			}
 		});
 
-		connection.query(" select * from messages where dest = ?", [req.session.user.email], function(err, results, fields){
+		connection.query(" select * from messages left join users on messages.src = users.email where messages.dest = ?", [req.session.user.email], function(err, results, fields){
 			if (err) {
 				console.log("Error with query " + err);
 			}else{
