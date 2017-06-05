@@ -11,6 +11,7 @@
 
 	<!-- Latest compiled and minified JavaScript -->
 	<script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js" integrity="sha384-Tc5IQib027qvyjSMfHjOMaLkfuWVxZxUPnCJA7l2mCWNIpG9mGCD8wGNIcPD7Txa" crossorigin="anonymous"></script>
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
   </head>
   <body>   
     	<div class="container">
@@ -25,7 +26,7 @@
 		      <li><a href="#">Archives</a></li>
 		    </ul>
 		    <ul class="nav navbar-nav navbar-right">
-		    	<li><a href="/user"><span class="glyphicon glyphicon-user"></span> <%= data.display_name %> </a></li>
+		    	<li><a id="user_profile" href="/#profile"><span class="glyphicon glyphicon-user"></span> <%= data.display_name %> </a></li>
       			<li><a href="#"><span class="glyphicon glyphicon-envelope"></span> <%= emails.length%></a></li>
       			<li><a href="/logout"><span class="glyphicon glyphicon-log-out"></span> Logout </a></li>
 		     
@@ -45,7 +46,8 @@
 	    <li><a data-toggle="tab" href="#menu3">Flag</a></li>
 	  </ul> -->	 
 </div>
-<div class="container">
+
+<div id="email_list" class="container">
 <table class="table table-hover">
     <thead>
       <tr>
@@ -66,6 +68,66 @@
     </tbody>
   </table>
 </div>
+
+<div id="profile" class="container">
+
+  <div class="row">
+        <div class="col-md-6">
+    
+         <div class="panel panel-default">
+        <div class="panel-body">
+                  <div class="row">
+                        <div class="col-xs-12 col-sm-8">
+                            <h2><%= data.display_name %></h2>
+                            <p><strong>Email: </strong> <%= data.email %> </p>
+                            <p><strong>Hobbies: </strong> Read, out with friends, listen to music, draw and learn new things. </p>
+                            
+                        </div><!--/col-->          
+                        <div class="col-xs-12 col-sm-4 text-center">
+                                <img src="http://api.randomuser.me/portraits/men/49.jpg" alt="" class="center-block img-circle img-responsive">
+                                <ul class="list-inline ratings text-center" title="Ratings">
+                                  <li><a href="#"><span class="fa fa-star fa-lg"></span></a></li>
+                                  <li><a href="#"><span class="fa fa-star fa-lg"></span></a></li>
+                                  <li><a href="#"><span class="fa fa-star fa-lg"></span></a></li>
+                                  <li><a href="#"><span class="fa fa-star fa-lg"></span></a></li>
+                                  <li><a href="#"><span class="fa fa-star fa-lg"></span></a></li>
+                                </ul>
+                        </div>
+                        <div class="col-xs-12 col-sm-4">
+                            <!-- <h2><strong>245</strong></h2>                    
+                            <p><small>Following</small></p> -->
+                            <!-- <button class="btn btn-info btn-block"><span class="fa fa-user"></span> Edit Profile Photo </button> -->
+                            <label class="btn btn-info btn-block" for="my-file-selector">
+               <input id="my-file-selector" type="file" style="display:none;">
+                Edit Profile Photo
+              </label>
+                        </div><!--/col-->
+
+                        
+                  </div><!--/row-->
+              </div><!--/panel-body-->
+          </div><!--/panel-->
+
+    
+    
+    </div>
+  </div>
+  
+
+</div>
+
+<script type="text/javascript">
+  $(function(){
+
+    $('#profile').hide();
+    $('#user_profile').click(function(){
+        $('#email_list').hide();
+        $('#profile').show();
+    });
+   
+
+});
+</script>
 
 
 

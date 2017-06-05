@@ -6,7 +6,8 @@ router.get('/', function(req, res, next) {
   if (!req.session.user) {
   	res.redirect('/login');
   }else{
-  	res.render('user', {title : "Trigger Mail Dashboard", data : req.session.user});
+  	console.log(req.session.emails);
+  	res.render('user', {title : req.session.user.display_name + " | User Profile", data : req.session.user});
   }
 });
 
