@@ -5,6 +5,7 @@ var logger = require('morgan');
 var cookieParser = require('cookie-parser');
 var bodyParser = require('body-parser');
 var session = require('express-session');
+const fileUpload = require('express-fileupload');
 
 var index = require('./routes/index');
 var users = require('./routes/users');
@@ -13,6 +14,7 @@ var logout = require('./routes/logout');
 var register = require('./routes/register');
 var new_msg = require('./routes/new');
 var user = require('./routes/user');
+var upload = require('./routes/upload');
 
 var app = express();
 
@@ -32,6 +34,7 @@ app.use(session({
 	resave : true,
 	saveUninitialized : true
 }));
+app.use(fileUpload());
 
 app.use('/', index);
 // app.use('/users', users);
@@ -40,6 +43,7 @@ app.use('/logout', logout);
 app.use('/register', register);
 app.use('/new', new_msg);
 app.use('/user', user);
+app.use('/upload', upload);
 
 app.get('/games', function(req,res,next){
 	var sess = req.session;

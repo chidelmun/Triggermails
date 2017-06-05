@@ -84,7 +84,7 @@
                             
                         </div><!--/col-->          
                         <div class="col-xs-12 col-sm-4 text-center">
-                                <img src="http://api.randomuser.me/portraits/men/49.jpg" alt="" class="center-block img-circle img-responsive">
+                                <img src="/images/photos/<%= data.display_name.replace(' ', '').toLowerCase() + '.jpg' %>" alt="" class="center-block img-circle img-responsive">
                                 <ul class="list-inline ratings text-center" title="Ratings">
                                   <li><a href="#"><span class="fa fa-star fa-lg"></span></a></li>
                                   <li><a href="#"><span class="fa fa-star fa-lg"></span></a></li>
@@ -94,22 +94,16 @@
                                 </ul>
                         </div>
                         <div class="col-xs-12 col-sm-4">
-                            <!-- <h2><strong>245</strong></h2>                    
-                            <p><small>Following</small></p> -->
-                            <!-- <button class="btn btn-info btn-block"><span class="fa fa-user"></span> Edit Profile Photo </button> -->
-                            <label class="btn btn-info btn-block" for="my-file-selector">
-               <input id="my-file-selector" type="file" style="display:none;">
-                Edit Profile Photo
-              </label>
-                        </div><!--/col-->
-
-                        
-                  </div><!--/row-->
+                        <form id="photo_upload" method="post" action="/upload" encType="multipart/form-data"> 
+                          <label class="btn btn-info btn-block" for="my-file-selector">
+                          <input name="photo" id="my-file-selector" type="file" style="display:none;">
+                           <strong id="text"> Edit Profile Photo </strong>
+                           </label>
+                        </form>
+                        </div>
+                   </div><!--/row-->
               </div><!--/panel-body-->
-          </div><!--/panel-->
-
-    
-    
+          </div><!--/panel-->    
     </div>
   </div>
   
@@ -123,6 +117,10 @@
     $('#user_profile').click(function(){
         $('#email_list').hide(500);
         $('#profile').show(500);
+    });
+
+    $('#my-file-selector').change(function(){
+        $('#photo_upload').submit();
     });
    
 
