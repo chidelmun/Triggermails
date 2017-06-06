@@ -15,6 +15,7 @@ var register = require('./routes/register');
 var new_msg = require('./routes/new');
 var user = require('./routes/user');
 var upload = require('./routes/upload');
+var requests = require('./routes/requests');
 
 var app = express();
 
@@ -44,6 +45,7 @@ app.use('/register', register);
 app.use('/new', new_msg);
 app.use('/user', user);
 app.use('/upload', upload);
+app.use('/requests', requests);
 
 app.get('/games', function(req,res,next){
 	var sess = req.session;
