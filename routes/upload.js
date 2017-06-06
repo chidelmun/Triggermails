@@ -33,7 +33,7 @@ router.post('/', function(req,res){
 	  		}
 	  	});
 
-	   res.send('File uploaded!');
+	   res.redirect('/');
 	   }
 
  });
