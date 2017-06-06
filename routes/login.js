@@ -5,7 +5,8 @@ var mysql = require('mysql');
 /* GET home page. */
 router.get('/', function(req, res, next) {
 	if (req.session.user) {
-		res.render('index', {title : 'Trigger Mail | Dashboard', data : req.session.user, emails : "" });
+		// res.render('index', {title : 'Trigger Mail | Dashboard', data : req.session.user, emails : "" });
+		res.redirect('/');
 	}else
 
 	res.render('login', { title: 'Wakku Login',  message : ''});
