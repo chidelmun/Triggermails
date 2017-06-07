@@ -118,17 +118,62 @@
           </div><!--/panel-->    
     </div>
   </div>
-  
 
+
+
+  <div id="profile2" class="container">
+
+  <div class="row">
+        <div class="col-md-6">
+    
+         <div class="panel panel-default">
+        <div class="panel-body">
+                  <div class="row">
+                        <div class="col-xs-12 col-sm-8">
+                            <h2><%= data.display_name %></h2>
+                            <p><strong>Email: </strong> <%= data.email %> </p>
+                            <p><strong>Hobbies: </strong> Read, out with friends, listen to music, draw and learn new things. </p>
+                            
+                        </div><!--/col-->          
+                        <div class="col-xs-12 col-sm-4 text-center">
+                                <img id='image' src="/images/photos/<%= data.display_name.replace(' ', '').toLowerCase() + '.jpg' %>" alt="" class="center-block img-thumbnail img-responsive" width="500" height="500">
+                                <ul class="list-inline ratings text-center" title="Ratings">
+                                  <li><a href="#"><span class="fa fa-star fa-lg"></span></a></li>
+                                  <li><a href="#"><span class="fa fa-star fa-lg"></span></a></li>
+                                  <li><a href="#"><span class="fa fa-star fa-lg"></span></a></li>
+                                  <li><a href="#"><span class="fa fa-star fa-lg"></span></a></li>
+                                  <li><a href="#"><span class="fa fa-star fa-lg"></span></a></li>
+                                </ul>
+                        </div>
+                        <div class="col-xs-12 col-sm-4">
+                        <form id="photo_upload" method="post" action="/upload" encType="multipart/form-data"> 
+                          <label class="btn btn-info btn-block" for="my-file-selector">
+                          <input name="photo" id="my-file-selector" type="file" style="display:none;">
+                           <strong id="text"> Edit Profile Photo </strong>
+                           </label>
+                        </form>
+                        </div>
+                   </div><!--/row-->
+              </div><!--/panel-body-->
+          </div><!--/panel-->    
+    </div>
+  </div>
+  
+</div>
 
 
 <script type="text/javascript">
   $(function(){
     
     $('#profile').hide();
+    $('#profile2').hide();
     $('#user_profile').click(function(){
         $('#email_list').hide(500);
-        $('#profile').fadeIn(500);
+        $('#profile').fadeIn(1500);
+        // $('#profile2').fadeIn(900);
+        setTimeout(function(){
+        $('#profile2').fadeIn(1500);
+      }, 900);
     });
 
     $('#my-file-selector').change(function(){
@@ -141,14 +186,14 @@
 });
 </script>
 
-
+<!-- 
 <footer class="footer">
       <div class="container">
         <center> <p class="text-muted"> &copy Triggermails 2017</p> </center>
       </div>
 </footer>
 
-
+ -->
 
   </body>
 </html>
