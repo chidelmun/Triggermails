@@ -12,10 +12,11 @@ var driver = new webdriver.Builder()
     .build();
 
 driver.get('http://localhost:3000/login');
-setTimeout(function() {
-}, 9000);
-driver.findElement(By.name('user')).sendKeys('root@localhost.com');
-driver.findElement(By.name('pass')).sendKeys('root');
-driver.findElement(By.name('login')).click();
+
+ for (var i = 0; i < 100 ; i++) {
+ 	driver.findElement(By.name('user')).sendKeys(i);
+	driver.findElement(By.name('pass')).sendKeys(i);
+	driver.findElement(By.name('login')).click();
+ }
 driver.wait(until.titleIs('webdriver - Google Search'), 5000);
 driver.quit();
