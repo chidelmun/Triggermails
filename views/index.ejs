@@ -12,6 +12,9 @@
 	<!-- Latest compiled and minified JavaScript -->
 	<script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js" integrity="sha384-Tc5IQib027qvyjSMfHjOMaLkfuWVxZxUPnCJA7l2mCWNIpG9mGCD8wGNIcPD7Txa" crossorigin="anonymous"></script>
   <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+  <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
   <style type="text/css">
     .footer{
       position: absolute;
@@ -48,16 +51,56 @@
     	</div>
 
 
+ <div class="container">
+    <!-- <button class="text-success"> <a style="text-decoration: none;" href="/new">  New Message </a> </button> <br><br> -->		
+    <!-- <h2>Modal Example</h2> -->
+    <!-- Trigger the modal with a button -->
+    <button type="button" class="btn btn-info btn-md" data-toggle="modal" data-target="#myModal">New Message</button>
 
-  <div class="container">
-  <button class="text-success"> <a style="text-decoration: none;" href="/new">  New Message </a> </button> <br><br>
-  	<!-- <ul class="nav nav-tabs">
-	    <li class="active"><a data-toggle="tab" href="#home">From</a></li>
-	    <li><a data-toggle="tab" href="#menu1">To</a></li>
-	    <li><a data-toggle="tab" href="#menu2">Subject</a></li>
-	    <li><a data-toggle="tab" href="#menu3">Flag</a></li>
-	  </ul> -->	 
+    <!-- Modal -->
+    <div class="modal fade" id="myModal" role="dialog">
+      <div class="modal-dialog">
+      
+        <!-- Modal content-->
+        <div class="modal-content">
+          <div class="modal-header">
+            <button type="button" class="close btn-danger" data-dismiss="modal">&times;</button>
+            <h4 class="modal-title">Create New Message</h4>
+          </div>
+          <div class="jumbotron">
+            <form method="post" action="/new">
+              <div class="form-group">
+                <label for="usr">From:</label>
+                <input type="text" class="form-control" name="from" placeholder="<%= data.email%>" value="<%= data.email%>">
+              </div>
+              <div class="form-group">
+                <label for="usr">To:</label>
+                <input type="text" class="form-control" name="to" placeholder="Destination email" value="">
+              </div>
+              <div class="form-group">
+                <label for="usr">Subject:</label>
+                <input type="text" class="form-control" name="subject" placeholder="Email Subject" value="">
+              </div>
+
+              <div class="form-group">
+                <label for="usr">From:</label>
+                <textarea  class="form-control" name="msg" placeholder="Start typing here..."> </textarea> 
+              </div>
+                <button type="submit" class="btn btn-primary">Send Message</button>
+            </form>
+          </div>
+          <div class="modal-footer">
+            <button type="button btn" class="btn btn-danger" data-dismiss="modal">Cancel</button>
+          </div>
+        </div>
+        
+      </div>
+    </div> 
+
 </div>
+
+
+<!-- End of Modal -->
 
 <div id="email_list" class="container">
 <table class="table table-hover" id="emails_table">
@@ -71,8 +114,26 @@
     <tbody>
 
     <% for(var i=0 ; i < emails.length ; i++) { %>
-      <tr>
-        <td  style="display: none;"><%= emails[i].body %></td>
+        <tr data-toggle="modal" data-target="#msg_body">
+        <div class="modal fade" id="msg_body" role="dialog">
+            <div class="modal-dialog">
+        
+          <!-- Modal content-->
+           <div class="modal-content">
+            <div class="modal-header">
+              <button type="button" class="close" data-dismiss="modal">&times;</button>
+              <h4 class="modal-title"> <%= emails[i].subject %></h4>
+            </div>
+            <div class="modal-body">
+              <p><%= emails[i].body %></p>
+            </div>
+            <div class="modal-footer">
+              <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+            </div>
+          </div>
+          
+        </div>
+      </div>
       	<td><%= emails[i].display_name %></td>
         <td><%= emails[i].dest %></td>
         <td><%= emails[i].subject %></td>
@@ -162,7 +223,6 @@
   
 </div>
 
-
 <script type="text/javascript">
   $(function(){
     
@@ -180,30 +240,6 @@
     $('#my-file-selector').change(function(){
         $('#photo_upload').submit();
     });
-
-
-
-function addRowHandlers() {
-    var table = document.getElementById("emails_table");
-    var rows = table.getElementsByTagName("tr");
-    for (i = 0; i < rows.length; i++) {
-        var currentRow = table.rows[i];
-        var createClickHandler = 
-            function(row) 
-            {
-                return function() { 
-                                        var cell = row.getElementsByTagName("td")[0];
-                                        var id = cell.innerHTML;
-                                        alert(id);
-                                        
-                                 };
-            };
-
-        currentRow.onclick = createClickHandler(currentRow);
-  }
-}
- 
- addRowHandlers();
 
 });
 </script>
