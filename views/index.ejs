@@ -60,7 +60,7 @@
 </div>
 
 <div id="email_list" class="container">
-<table class="table table-hover">
+<table class="table table-hover" id="emails_table">
     <thead>
       <tr>
         <th>From</th>
@@ -71,7 +71,7 @@
     <tbody>
 
     <% for(var i=0 ; i < emails.length ; i++) { %>
-      <tr>
+      <tr data="<%= emails[i].display_name %>">
       	<td><%= emails[i].display_name %></td>
         <td><%= emails[i].dest %></td>
         <td><%= emails[i].subject %></td>
@@ -167,6 +167,7 @@
     
     $('#profile').hide();
     $('#profile2').hide();
+    $('#email_body').hide();
     $('#user_profile').click(function(){
         $('#email_list').hide(500);
         $('#profile').fadeIn(1500);
@@ -180,8 +181,32 @@
         $('#photo_upload').submit();
     });
 
-   
-  
+    $('#msg_body').click(function(){
+      alert();
+
+    }); 
+
+
+function addRowHandlers() {
+    var table = document.getElementById("emails_table");
+    var rows = table.getElementsByTagName("tr");
+    for (i = 0; i < rows.length; i++) {
+        var currentRow = table.rows[i];
+        var createClickHandler = 
+            function(row) 
+            {
+                return function() { 
+                                        var cell = row.getElementsByTagName("td")[0];
+                                        var id = cell.innerHTML;
+                                        alert("id:" + id);
+                                 };
+            };
+
+        currentRow.onclick = createClickHandler(currentRow);
+  }
+}
+ 
+ addRowHandlers();
 
 });
 </script>
