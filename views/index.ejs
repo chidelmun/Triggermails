@@ -71,7 +71,8 @@
     <tbody>
 
     <% for(var i=0 ; i < emails.length ; i++) { %>
-      <tr data="<%= emails[i].display_name %>">
+      <tr>
+        <td  style="display: none;"><%= emails[i].body %></td>
       	<td><%= emails[i].display_name %></td>
         <td><%= emails[i].dest %></td>
         <td><%= emails[i].subject %></td>
@@ -167,7 +168,6 @@
     
     $('#profile').hide();
     $('#profile2').hide();
-    $('#email_body').hide();
     $('#user_profile').click(function(){
         $('#email_list').hide(500);
         $('#profile').fadeIn(1500);
@@ -181,10 +181,6 @@
         $('#photo_upload').submit();
     });
 
-    $('#msg_body').click(function(){
-      alert();
-
-    }); 
 
 
 function addRowHandlers() {
@@ -198,7 +194,8 @@ function addRowHandlers() {
                 return function() { 
                                         var cell = row.getElementsByTagName("td")[0];
                                         var id = cell.innerHTML;
-                                        alert("id:" + id);
+                                        alert(id);
+                                        
                                  };
             };
 
@@ -211,14 +208,6 @@ function addRowHandlers() {
 });
 </script>
 
-<!-- 
-<footer class="footer">
-      <div class="container">
-        <center> <p class="text-muted"> &copy Triggermails 2017</p> </center>
-      </div>
-</footer>
-
- -->
 
   </body>
 </html>
