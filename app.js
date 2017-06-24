@@ -44,6 +44,7 @@ app.use('/logout', logout);
 app.use('/register', register);
 app.use('/new', new_msg);
 app.use('/user', user);
+app.use('/users', users);
 app.use('/upload', upload);
 app.use('/requests', requests);
 

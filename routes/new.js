@@ -30,15 +30,19 @@ router.post('/', function(req,res,next){
 			console.log("Connected...");
 		}
 	});
-
-	connection.query("insert into messages(src, dest, subject, body) values(?,?,?,?)",[req.body.from, req.body.to,req.body.subject,req.body.msg], function(err, results, fields){
+	var emails = req.body.to;
+	var email_list = emails.split(',');
+	for(var i = 0 ; i< email_list.length ; i++){
+		connection.query("insert into messages(src, dest, subject, body) values(?,?,?,?)",[req.body.from, email_list[i],req.body.subject,req.body.msg], function(err, results, fields){
 		if (err) {
 			console.log("Error Executing Query " + err);
 		}else{
 			console.log("Query successful ");
 			res.redirect('/');
 		}
-	});	
+	});
+	}
+		
 	
 });
 
