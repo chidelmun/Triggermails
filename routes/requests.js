@@ -32,10 +32,10 @@ router.get('/', function(req, res, next) {
 					console.log("Query success ");
 					console.log(results);
 					req.session.emails = results.length;
-					res.render('index', {title : "Trigger Mail Dashboard", data : req.session.user, emails : results });
+					res.render('requests', {title : "Trigger Mail Dashboard", data : req.session.user, emails : results });
 				}else{
 					console.log("No Emails ");
-					res.render('index', {title : "Trigger Mail Dashboard", data : req.session.user, emails : results });
+					res.render('requests', {title : "Trigger Mail Dashboard", data : req.session.user, emails : results });
 				}
 			}
 		});

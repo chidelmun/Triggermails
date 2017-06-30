@@ -22,7 +22,7 @@ router.get('/api/v1/data/users', function(req, res, next) {
 			}
 		});
 
-		connection.query(" select * from users", function(err, results, fields){
+		connection.query(" select display_name from users", function(err, results, fields){
 			if (err) {
 				console.log("Error with query " + err);
 			}else{
