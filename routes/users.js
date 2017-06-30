@@ -4,9 +4,6 @@ var mysql = require('mysql');
 
 /* GET users listing. */
 router.get('/api/v1/data/users', function(req, res, next) {
-	if (!req.session.user) {
-		res.json({error : "Not Authenticated",code : 404});
-	}else{
 		var connection = mysql.createConnection({
 			host : 'localhost',
 			user : 'root',
@@ -22,14 +19,21 @@ router.get('/api/v1/data/users', function(req, res, next) {
 			}
 		});
 
-		connection.query(" select display_name from users", function(err, results, fields){
+		connection.query(" select display_name from users ", function(err, results, fields){
 			if (err) {
 				console.log("Error with query " + err);
 			}else{
 				if (results.length > 0) {
+					  var names = [];
+
+				      for (var i=0 ;i < results.length ; i++) {
+
+				          names.push(results[i]);
+
+				      }
 					console.log("Query success ");
-					console.log(results);
-					res.json(results);
+					console.log(names);
+					res.json(names);
 					
 				}else{
 					console.log("No Emails ");
@@ -37,7 +41,7 @@ router.get('/api/v1/data/users', function(req, res, next) {
 				}
 			}
 		});
-	}
+	
   	
 });
 

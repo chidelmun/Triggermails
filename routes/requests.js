@@ -24,18 +24,18 @@ router.get('/', function(req, res, next) {
 			}
 		});
 
-		connection.query(" select * from messages left join users on messages.src = users.email where messages.dest = ?", [req.session.user.email], function(err, results, fields){
+		connection.query(" select display_name from users", function(err, results, fields){
 			if (err) {
 				console.log("Error with query " + err);
 			}else{
 				if (results.length > 0) {
 					console.log("Query success ");
 					console.log(results);
-					req.session.emails = results.length;
-					res.render('requests', {title : "Trigger Mail Dashboard", data : req.session.user, emails : results });
+					// req.session.emails = results.length;
+					res.render('requests', {title : "Trigger Mail Friends", data : req.session.user, friends : results });
 				}else{
 					console.log("No Emails ");
-					res.render('requests', {title : "Trigger Mail Dashboard", data : req.session.user, emails : results });
+					res.render('requests', {title : "Trigger Mail Friends", data : req.session.user, friends : results });
 				}
 			}
 		});
