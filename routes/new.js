@@ -33,7 +33,7 @@ router.post('/', function(req,res,next){
 	var emails = req.body.to;
 	var email_list = emails.split(',');
 	for(var i = 0 ; i< email_list.length ; i++){
-		connection.query("insert into messages(src, dest, subject, body) values(?,?,?,?)",[req.body.from, email_list[i],req.body.subject,req.body.msg], function(err, results, fields){
+		connection.query("insert into messages(src, dest, subject, body) values(?,?,?,?)",[req.body.from, email_list[iw],req.body.subject,req.body.msg], function(err, results, fields){
 		if (err) {
 			console.log("Error Executing Query " + err);
 		}else{
