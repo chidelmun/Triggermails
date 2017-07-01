@@ -5,10 +5,10 @@ var mysql = require('mysql');
 /* GET users listing. */
 router.get('/api/v1/data/users', function(req, res, next) {
 		var connection = mysql.createConnection({
-			host : 'localhost',
-			user : 'root',
-			password : 'root',
-			database : 'mailapp'
+			host : 'sql3.freemysqlhosting.net',
+			user : 'sql3182555',
+			password : '1CV4Q5vK8D',
+			database : ' sql3182555'
 		});
 		connection.connect(function(err){
 			if (err) {

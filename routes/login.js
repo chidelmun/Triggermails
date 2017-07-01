@@ -22,10 +22,10 @@ router.post('/', function(req, res,next){
 		console.log("Username : " + username + " Password : " + password);
 
 		var connection = mysql.createConnection({
-			host : "localhost",
-			user : "root",
-			password : "root",
-			database : "mailapp"
+			host : 'sql3.freemysqlhosting.net',
+			user : 'sql3182555',
+			password : '1CV4Q5vK8D',
+			database : ' sql3182555'
 		});
 
 		connection.connect(function(err){

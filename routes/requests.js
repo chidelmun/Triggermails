@@ -10,10 +10,10 @@ router.get('/', function(req, res, next) {
 	}
 	else{
 		var connection = mysql.createConnection({
-			host : 'localhost',
-			user : 'root',
-			password : 'root',
-			database : 'mailapp'
+			host : 'sql3.freemysqlhosting.net',
+			user : 'sql3182555',
+			password : '1CV4Q5vK8D',
+			database : ' sql3182555'
 		});
 		connection.connect(function(err){
 			if (err) {
@@ -24,7 +24,7 @@ router.get('/', function(req, res, next) {
 			}
 		});
 
-		connection.query(" select display_name from users", function(err, results, fields){
+		connection.query(" select user_id, display_name from users", function(err, results, fields){
 			if (err) {
 				console.log("Error with query " + err);
 			}else{
